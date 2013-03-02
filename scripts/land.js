@@ -3,8 +3,8 @@ function Land()
   this.width              = 100;
   this.height             = 100;
   this.fillStyle          = "#00d23e"; // green
-  this.x                  = 0;
-  this.y                  = 0;
+  this.x                  = 200;
+  this.y                  = 100;
   this.drawWaves          = true;
   this.waves              = [];
   this.waveCycle          = 0;
