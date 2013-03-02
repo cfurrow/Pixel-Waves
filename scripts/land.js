@@ -26,7 +26,7 @@ Land.prototype.draw = function(ctx)
 
     for(;i<len;i++)
     {
-      if(this.waves[i].age < 100){
+      if(this.waves[i].age < 1/this.waves[i].opacityStep){
         this.waves[i].draw(ctx);
       }
       else {
