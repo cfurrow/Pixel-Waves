@@ -7,7 +7,7 @@ body
 /** Scaffolding **/
 .container
 {
-  width:80%;
+  width:960px;
   margin:0 auto;
 }
 
@@ -16,6 +16,7 @@ body
 #wave-sim
 {
   background-color:#4ea9d4;
-  width:100%;
+  width:960px;
   height:600px;
+  margin:0 auto;
 }
