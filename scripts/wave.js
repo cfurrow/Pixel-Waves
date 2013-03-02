@@ -8,7 +8,7 @@ function Wave(land)
   this.x                = land.x - (this.width  - land.width)/2;
   this.y                = land.y - (this.height - land.height)/2;
   this.age              = 0;
-  this.waveStepInPixels = 0.2; 
+  this.waveStepInPixels = land.waveStepInPixels || 0.2; 
   this.opacity          = 0.001;
   this.opacityStep      = 0.0001;
   this.isVisible        = true;

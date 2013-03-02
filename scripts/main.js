@@ -35,6 +35,7 @@ function init()
   land2.y      = land.y-80;
   land2.width  = 50;
   land2.height = 50;
+  land2.waveStepInPixels = 0.1;
 
   step.ctx     = ctx;
   step.lands   = [];
