@@ -6,7 +6,6 @@ function Land()
   this.x                  = 0;
   this.y                  = 0;
   this.drawWaves          = true;
-  this.waveStepInPixels   = 0.4; // each animation loop, move this much?
   this.waves              = [];
   this.waveCycle          = 0;
 }
@@ -27,10 +26,12 @@ Land.prototype.draw = function(ctx)
 
     for(;i<len;i++)
     {
-      this.waves[i].width  += this.waveStepInPixels;
-      this.waves[i].height += this.waveStepInPixels;
-      ctx.strokeStyle      =  this.waves[i].strokeStyle;
-      ctx.strokeRect(this.x,this.y,this.waves[i].width,this.waves[i].height);
+      if(this.waves[i].age < 100){
+        this.waves[i].draw(ctx);
+      }
+      else {
+        this.waves.slice(i,1);
+      }
     }
 
 
