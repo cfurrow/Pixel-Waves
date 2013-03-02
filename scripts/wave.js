@@ -11,6 +11,7 @@ function Wave(land)
   this.waveStepInPixels = 0.2; 
   this.opacity          = 0.001;
   this.opacityStep      = 0.0001;
+  this.isVisible        = true;
 }
 
 Wave.prototype.draw = function(ctx)
@@ -23,6 +24,9 @@ Wave.prototype.draw = function(ctx)
     this.y      += this.waveStepInPixels/2;
     ctx.strokeStyle =  this.calculateStrokeStyle();
     ctx.strokeRect(this.x,this.y,this.width,this.height);
+  }
+  else{
+    this.isVisible = false;
   }
 }
 
