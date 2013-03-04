@@ -1,38 +1,34 @@
-function Wave(land)
+function OceanWave(initialY)
 {
-  this.sizeMultiple     = 1.5;
-  this.width            = land.width  * this.sizeMultiple;
-  this.height           = land.height * this.sizeMultiple;
-  this.minWidth         = land.width;
-  this.minHeight        = land.height;
-  this.x                = land.x - (this.width  - land.width)/2;
-  this.y                = land.y - (this.height - land.height)/2;
-  this.age              = 0;
-  this.waveStepInPixels = land.waveStepInPixels || 0.2; 
-  this.opacity          = 0.001;
-  this.opacityStep      = 0.0001;
-  this.isVisible        = true;
+  this.x           = 0;
+  this.y           = initialY || 0;
+  this.resolution  = 200;
+  this.strokeStyle = "rgba(255,255,255,0.1)";
+  this.factor      = Math.random()*0.5 + 0.1;
 }
 
-Wave.prototype.draw = function(ctx)
+OceanWave.prototype.draw = function(ctx)
 {
-  this.width  -= this.waveStepInPixels;
-  this.height -= this.waveStepInPixels;
-  this.age++;
-  if(this.width > this.minWidth && this.height > this.minHeight){
-    this.x      += this.waveStepInPixels/2;
-    this.y      += this.waveStepInPixels/2;
-    ctx.strokeStyle =  this.calculateStrokeStyle();
-    ctx.strokeRect(this.x,this.y,this.width,this.height);
+  if(this.y > ctx.canvas.height){
+    this.y = 0;
+    this.factor      = Math.random()*1.5;
   }
-  else{
-    this.isVisible = false;
-  }
-}
+  var i = 0;
+  var lx, ly;
+  var step = ctx.canvas.width / this.resolution;
+  lx = i;
+  ly = 0;
 
-Wave.prototype.calculateStrokeStyle = function()
-{
-  this.opacity = this.opacity + (this.age * this.opacityStep);
-  return "rgba(255,255,255,"+this.opacity+")";
+  ctx.moveTo(0,this.y);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = this.strokeStyle;
+  ctx.beginPath();
+  for(; i< ctx.canvas.width; i+=step)
+  {
+    ctx.lineTo(lx,ly);
+    lx = (2+this.factor)*i;
+    ly = this.y + Math.sin(i);
+  }
+  ctx.stroke();
 }
 
