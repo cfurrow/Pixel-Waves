@@ -3,7 +3,7 @@ function OceanWave(initialY)
   this.x           = 0;
   this.y           = initialY || 0;
   this.resolution  = 200;
-  this.strokeStyle = "rgba(255,255,255,0.2)";
+  this.strokeStyle = "rgba(255,255,255,0.1)";
   this.factor      = Math.random()*0.5 + 0.1;
 }
 

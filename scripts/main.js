@@ -36,7 +36,7 @@ function init()
   var ctx;
   var land;
   var land2;
-  var oceanWaves = 30;
+  var oceanWaves = 20;
 
   canvas       = document.getElementById("wave-sim");
   ctx          = canvas.getContext("2d");
@@ -55,7 +55,7 @@ function init()
   step.lands.push(land2);
   step.oceanWaves = [];
   for(var i =0; i< oceanWaves; i++){
-    step.oceanWaves.push(new OceanWave(20*i));
+    step.oceanWaves.push(new OceanWave(30*i));
   }
 
   // start animation
