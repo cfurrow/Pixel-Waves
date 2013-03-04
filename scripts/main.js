@@ -55,7 +55,7 @@ function init()
   step.lands.push(land2);
   step.oceanWaves = [];
   for(var i =0; i< oceanWaves; i++){
-    step.oceanWaves.push(new OceanWave(30*i));
+    step.oceanWaves.push(new OceanWave((oceanWaves+10)*i));
   }
 
   // start animation
